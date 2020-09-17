@@ -1,4 +1,4 @@
-section{scroll-snap-align:start;position:relative;padding-top:7.5vh}body,section{height:100vh;width:100%}body{overflow:auto}*{margin:0;padding:0;box-sizing:border-box;outline:none;font-family:Raleway,sans-serif;-webkit-user-select:none;-moz-user-select:none;user-select:none}html{scroll-snap-type:y mandatory}@keyframes entryAnimation{to{opacity:1;transform:scale(1.1)}}a{cursor:pointer}
+section{scroll-snap-align:start;position:relative;padding-top:7.5vh}body,section{height:100vh;width:100%}body{overflow:auto}*{margin:0;padding:0;box-sizing:border-box;outline:none;font-family:Raleway,sans-serif;-webkit-user-select:none;-moz-user-select:none;user-select:none}html{scroll-snap-type:y mandatory;scroll-behavior:smooth}@keyframes entryAnimation{to{opacity:1;transform:scale(1.1)}}a{cursor:pointer}h2{letter-spacing:.8px;padding:30px;font-size:3.6vw!important;font-weight:500;font-family:Brush Script MT}p{font-family:Garamond}.avoid-space{white-space:nowrap}h6{font-family:monospace}
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
