@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const posts = [
+  // Future blog posts will go here
+  // {
+  //   title: "Building a Lakehouse Platform at Scale",
+  //   date: "2024-01-15",
+  //   excerpt: "Lessons learned from building a platform that ingests 40TB daily...",
+  //   slug: "lakehouse-platform-scale",
+  //   tags: ["Data Engineering", "Databricks", "Architecture"]
+  // }
+];
+---
+
+<Layout title="Blog — Sanket Saha" description="Thoughts on data engineering, architecture, and technology">
+  <div class="page-header">
+    <h1>Blog</h1>
+    <p>Thoughts on data engineering, distributed systems, and building at scale.</p>
+  </div>
+
+  {posts.length > 0 ? (
+    <div class="posts-list">
+      {posts.map(post => (
+        <article class="post-card">
+          <div class="post-meta">
+            <time>{post.date}</time>
+            <div class="post-tags">
+              {post.tags.map(tag => <span>{tag}</span>)}
+            </div>
+          </div>
+          <h2>{post.title}</h2>
+          <p>{post.excerpt}</p>
+          <a href={`/blog/${post.slug}`} class="read-more">Read more →</a>
+        </article>
+      ))}
+    </div>
+  ) : (
+    <div class="empty-state">
+      <div class="empty-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+        </svg>
+      </div>
+      <h2>Coming Soon</h2>
+      <p>I'm working on writing about data engineering patterns, lakehouse architectures, and lessons from building systems at scale.</p>
+      <div class="topics">
+        <span>Upcoming topics:</span>
+        <ul>
+          <li>Building lakehouse platforms that scale</li>
+          <li>AI agents for pipeline observability</li>
+          <li>Self-hosting infrastructure</li>
+          <li>From backend to data engineering</li>
+        </ul>
+      </div>
+    </div>
+  )}
+</Layout>
+
+<style>
+  .page-header {
+    margin-bottom: 2rem;
+  }
+  .page-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .page-header p {
+    color: var(--muted);
+  }
+
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .post-card {
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .post-card:hover {
+    border-color: var(--accent);
+  }
+
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  .post-meta time {
+    font-size: 0.8rem;
+    color: var(--light);
+  }
+  .post-tags {
+    display: flex;
+    gap: 0.3rem;
+  }
+  .post-tags span {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--light);
+  }
+
+  .post-card h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .post-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  .read-more {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .empty-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.25rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .empty-icon svg {
+    width: 32px;
+    height: 32px;
+    color: var(--light);
+  }
+
+  .empty-state h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .empty-state > p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    max-width: 400px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+
+  .topics {
+    text-align: left;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .topics span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--light);
+  }
+  .topics ul {
+    list-style: none;
+    margin-top: 0.5rem;
+  }
+  .topics li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+  .topics li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+</style>

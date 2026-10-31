@@ -1,0 +1,157 @@
+---
+const experience = [
+  {
+    company: "JP Morgan Chase",
+    role: "Senior Data Engineer",
+    period: "Sep 2024 – Present",
+    tech: ["Databricks", "Spark", "Delta Lake", "Kafka", "AWS", "Python"],
+    points: [
+      "Built observability platform across 100+ live streaming jobs — real-time visibility into lag, throughput, and job health",
+      "Extended platform with LLM agents (Google ADK + Mem0) that diagnose anomalies and recommend fixes",
+      "Reduced pipeline runtime by 50% (50 min → 23 min) via Spark UI and DAG optimization",
+      "Cut ingestion boilerplate by 90% — designed reusable Maven JAR for consistent onboarding"
+    ]
+  },
+  {
+    company: "Optum / UnitedHealth Group",
+    role: "Software Engineering Lead",
+    period: "Jan 2021 – Sep 2024",
+    tech: ["Kafka", "Spring Batch", "Java", "AWS", "Microservices"],
+    points: [
+      "Processed 100K transactions in under 3 minutes via Kafka + Spring Batch — 4x faster than prior system",
+      "Built reusable Kafka and Object Storage libraries adopted by 30+ microservices",
+      "Mentored 4 engineers, led code reviews, drove clean architecture adoption"
+    ]
+  },
+  {
+    company: "Deloitte USI",
+    role: "Consultant — Full Stack Developer",
+    period: "Apr 2018 – Dec 2020",
+    tech: ["Java", "Python", "Spring Boot", "React", "SAP Integration"],
+    points: [
+      "Reduced SAP Order Sync failures by 90% — resolved race conditions for ExxonMobil",
+      "Cut manual translation effort by 70% with Python automation POC",
+      "Delivered Full Palletization, Order Management, and Market Validation features"
+    ]
+  },
+  {
+    company: "Tata Consultancy Services",
+    role: "System Engineer",
+    period: "Sep 2015 – Apr 2018",
+    tech: ["Java", "Spring", "Oracle", "Banking Systems"],
+    points: [
+      "Redesigned cross-channel CCV system with server-side validation for major banking client",
+      "Led system impact analysis and enforced coding standards across distributed team"
+    ]
+  }
+];
+---
+
+<section>
+  <h2>Experience</h2>
+  <div class="exp-list">
+    {experience.map(job => (
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">{job.company}</span>
+            <span class="exp-role">{job.role}</span>
+          </div>
+          <span class="exp-period">{job.period}</span>
+        </div>
+        <div class="exp-tech">
+          {job.tech.map(t => <span>{t}</span>)}
+        </div>
+        <ul class="exp-points">
+          {job.points.map(p => <li>{p}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  section { margin-bottom: 2.5rem; }
+
+  h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--light);
+    margin-bottom: 1.25rem;
+  }
+
+  .exp-list { display: flex; flex-direction: column; gap: 1.75rem; }
+
+  .exp-item {
+    padding-left: 1rem;
+    border-left: 2px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .exp-item:hover { border-color: var(--accent); }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .exp-company {
+    font-weight: 600;
+    font-size: 1rem;
+    display: block;
+  }
+  .exp-role {
+    font-size: 0.875rem;
+    color: var(--accent);
+    display: block;
+    margin-top: 0.1rem;
+  }
+  .exp-period {
+    font-size: 0.8rem;
+    color: var(--light);
+    white-space: nowrap;
+  }
+
+  .exp-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+  .exp-tech span {
+    font-size: 0.7rem;
+    color: var(--muted);
+    padding: 0.15rem 0.45rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+
+  .exp-points {
+    list-style: none;
+  }
+  .exp-points li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+  .exp-points li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .exp-points li:last-child { margin-bottom: 0; }
+
+  @media (max-width: 550px) {
+    .exp-header { flex-direction: column; gap: 0.25rem; }
+  }
+</style>

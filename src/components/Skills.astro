@@ -1,0 +1,104 @@
+---
+const skillGroups = [
+  {
+    label: "Data Engineering",
+    items: ["Databricks", "Apache Spark", "PySpark", "Kafka", "Kinesis", "Delta Lake", "ETL/ELT", "Parquet"]
+  },
+  {
+    label: "Cloud & Infra",
+    items: ["AWS", "S3", "ECS", "EKS", "Lambda", "Docker", "Kubernetes", "Terraform", "GitHub Actions"]
+  },
+  {
+    label: "Languages",
+    items: ["Python", "Java", "SQL", "Scala", "TypeScript"]
+  },
+  {
+    label: "AI & Agents",
+    items: ["Google ADK", "LangChain", "MCP", "OpenAI", "Claude", "Mem0"]
+  },
+  {
+    label: "Backend & DB",
+    items: ["Spring Boot", "FastAPI", "Microservices", "MySQL", "Oracle", "MongoDB", "DynamoDB"]
+  },
+  {
+    label: "Observability",
+    items: ["Spark UI", "DAG Analysis", "Splunk", "Grafana", "Prometheus"]
+  }
+];
+---
+
+<section>
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    {skillGroups.map(group => (
+      <div class="skill-group">
+        <h3>{group.label}</h3>
+        <div class="skill-items">
+          {group.items.map(s => <span class="skill">{s}</span>)}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  section { margin-bottom: 2.5rem; }
+
+  h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--light);
+    margin-bottom: 1.25rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .skill-group {
+    padding: 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .skill-group h3 {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--light);
+    margin-bottom: 0.6rem;
+  }
+
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .skill {
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding: 0.2rem 0.5rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: all 0.15s;
+  }
+
+  .skill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  @media (max-width: 550px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

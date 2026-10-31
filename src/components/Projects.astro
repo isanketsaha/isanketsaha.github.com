@@ -1,0 +1,127 @@
+---
+const projects = [
+  {
+    name: "Tulip School Management System",
+    description: "Full-stack platform serving 150+ students — attendance, fee tracking, WhatsApp notifications, Metabase analytics, AI-driven smart review",
+    tech: ["React", "Java", "Spring Boot", "MySQL", "WhatsApp API"],
+    link: "https://tulipschool.co.in",
+    linkText: "Live Site"
+  },
+  {
+    name: "AI Agent SDK",
+    description: "Built SDK to integrate AI agents with school and personal systems using modern agent frameworks",
+    tech: ["Python", "Google ADK", "MCP", "LangChain"],
+    link: "https://github.com/isanketsaha",
+    linkText: "GitHub"
+  },
+  {
+    name: "Self-Hosted Home Server",
+    description: "Secure storage, media streaming, and home automation — hands-on DevOps beyond enterprise",
+    tech: ["Docker", "Synology", "Terraform"],
+    link: null,
+    linkText: null
+  }
+];
+---
+
+<section>
+  <h2>Projects</h2>
+  <div class="projects-list">
+    {projects.map(project => (
+      <div class="project-item">
+        <div class="project-header">
+          <h3>{project.name}</h3>
+          {project.link && (
+            <a href={project.link} target="_blank" class="project-link">
+              {project.linkText}
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+            </a>
+          )}
+        </div>
+        <p class="project-desc">{project.description}</p>
+        <div class="project-tech">
+          {project.tech.map(t => <span>{t}</span>)}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  section { margin-bottom: 2.5rem; }
+
+  h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--light);
+    margin-bottom: 1.25rem;
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project-item {
+    padding: 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color 0.2s;
+  }
+  .project-item:hover {
+    border-color: var(--accent);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-header h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .project-link:hover {
+    text-decoration: underline;
+  }
+  .project-link svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .project-tech span {
+    font-size: 0.7rem;
+    color: var(--light);
+    padding: 0.15rem 0.4rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+</style>

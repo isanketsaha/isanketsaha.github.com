@@ -1,0 +1,222 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    name: "Tulip School Management System",
+    description: "Full-stack platform serving 150+ students in rural West Bengal. Built to simplify school administration for a community with limited tech exposure.",
+    details: [
+      "Live attendance tracking and fee management",
+      "WhatsApp notifications to parents via WATI/AiSensy",
+      "Metabase analytics dashboard for insights",
+      "AI-driven smart review system",
+      "Weekly planner for teachers"
+    ],
+    tech: ["React", "Java", "Spring Boot", "MySQL", "WhatsApp API", "Metabase"],
+    link: "https://tulipschool.co.in",
+    github: "https://github.com/isanketsaha/TulipApp",
+    status: "Live"
+  },
+  {
+    name: "AI Agent SDK",
+    description: "Built SDK to integrate AI agents naturally with different systems — school management and personal productivity tools.",
+    details: [
+      "Multi-agent routing via OpenClaw",
+      "Integration with Google ADK and LangChain",
+      "MCP (Model Context Protocol) support",
+      "Memory persistence with Mem0"
+    ],
+    tech: ["Python", "Google ADK", "LangChain", "MCP", "Pydantic", "FastAPI"],
+    link: null,
+    github: "https://github.com/isanketsaha",
+    status: "Active"
+  },
+  {
+    name: "Self-Hosted Home Server",
+    description: "Personal infrastructure running secure storage, media streaming, and home automation — hands-on DevOps beyond enterprise context.",
+    details: [
+      "Synology NAS for backup and storage",
+      "Ollama + Open WebUI for local LLM inference",
+      "Actual Budget for personal finance",
+      "Docker-based service orchestration"
+    ],
+    tech: ["Docker", "Synology", "Terraform", "Ollama", "Qwen3"],
+    link: null,
+    github: null,
+    status: "Running"
+  },
+  {
+    name: "Cron Parser Service",
+    description: "Java application that parses cron expressions into human-readable schedules with range evaluation.",
+    details: [
+      "Tokenizes input expressions",
+      "Evaluates ranges and wildcards",
+      "Clean command-line output"
+    ],
+    tech: ["Java"],
+    link: null,
+    github: "https://github.com/isanketsaha/CronParserService",
+    status: "Complete"
+  }
+];
+---
+
+<Layout title="Projects — Sanket Saha" description="Side projects and open source work by Sanket Saha">
+  <div class="page-header">
+    <h1>Projects</h1>
+    <p>Things I build outside of work — from production systems to experiments.</p>
+  </div>
+
+  <div class="projects-grid">
+    {projects.map(project => (
+      <article class="project-card">
+        <div class="project-header">
+          <h2>{project.name}</h2>
+          <span class={`status status-${project.status.toLowerCase()}`}>{project.status}</span>
+        </div>
+
+        <p class="project-desc">{project.description}</p>
+
+        <ul class="project-details">
+          {project.details.map(d => <li>{d}</li>)}
+        </ul>
+
+        <div class="project-tech">
+          {project.tech.map(t => <span>{t}</span>)}
+        </div>
+
+        <div class="project-links">
+          {project.link && (
+            <a href={project.link} target="_blank" class="project-link">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+              Live Site
+            </a>
+          )}
+          {project.github && (
+            <a href={project.github} target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    margin-bottom: 2rem;
+  }
+  .page-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .page-header p {
+    color: var(--muted);
+  }
+
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover {
+    border-color: var(--accent);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .project-header h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .status {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .status-live { background: #dcfce7; color: #166534; }
+  .status-active { background: #dbeafe; color: #1e40af; }
+  .status-running { background: #fef3c7; color: #92400e; }
+  .status-complete { background: var(--border); color: var(--muted); }
+
+  @media (prefers-color-scheme: dark) {
+    .status-live { background: #166534; color: #dcfce7; }
+    .status-active { background: #1e40af; color: #dbeafe; }
+    .status-running { background: #92400e; color: #fef3c7; }
+  }
+
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .project-details {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  .project-details li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .project-details li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+  }
+  .project-tech span {
+    font-size: 0.7rem;
+    color: var(--light);
+    padding: 0.15rem 0.4rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .project-link:hover { text-decoration: underline; }
+  .project-link svg { width: 16px; height: 16px; }
+</style>

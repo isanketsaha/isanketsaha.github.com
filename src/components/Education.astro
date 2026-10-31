@@ -1,0 +1,166 @@
+---
+const education = {
+  degree: "B.Tech in Information Technology",
+  university: "GITAM University",
+  period: "2011 – 2015",
+  location: "Visakhapatnam, India"
+};
+
+const certifications = [
+  {
+    name: "Databricks Certified Data Engineer Associate",
+    issuer: "Databricks",
+    date: "Sep 2024",
+    icon: "DB"
+  },
+  {
+    name: "AWS Certified Cloud Practitioner (CLF-C02)",
+    issuer: "Amazon Web Services",
+    date: "Jul 2024",
+    icon: "AWS"
+  },
+  {
+    name: "Oracle Certified Professional, Java SE 6",
+    issuer: "Oracle",
+    date: "Nov 2014",
+    icon: "OCP"
+  }
+];
+---
+
+<section>
+  <h2>Education & Certifications</h2>
+
+  <div class="edu-cert-grid">
+    <div class="education-card">
+      <div class="edu-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+      </div>
+      <div class="edu-info">
+        <h3>{education.degree}</h3>
+        <p class="edu-university">{education.university}</p>
+        <p class="edu-meta">{education.period} · {education.location}</p>
+      </div>
+    </div>
+
+    <div class="certs-list">
+      {certifications.map(cert => (
+        <div class="cert-item">
+          <span class="cert-icon">{cert.icon}</span>
+          <div class="cert-info">
+            <span class="cert-name">{cert.name}</span>
+            <span class="cert-meta">{cert.issuer} · {cert.date}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  section { margin-bottom: 2.5rem; }
+
+  h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--light);
+    margin-bottom: 1.25rem;
+  }
+
+  .edu-cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .education-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .edu-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .edu-icon svg {
+    width: 20px;
+    height: 20px;
+    color: white;
+  }
+
+  .edu-info h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+  }
+  .edu-university {
+    font-size: 0.85rem;
+    color: var(--accent);
+  }
+  .edu-meta {
+    font-size: 0.8rem;
+    color: var(--light);
+    margin-top: 0.15rem;
+  }
+
+  .certs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .cert-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .cert-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .cert-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .cert-meta {
+    font-size: 0.7rem;
+    color: var(--light);
+  }
+
+  @media (max-width: 650px) {
+    .edu-cert-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
