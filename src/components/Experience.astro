@@ -1,77 +1,222 @@
 ---
-const experience = [
+const experience: {
+  company: string;
+  role: string;
+  period: string;
+  domain: string;
+  summary: string;
+  tech: string[];
+  groups: { label?: string; points: string[] }[];
+}[] = [
   {
     company: "JP Morgan Chase",
     role: "Senior Data Engineer",
     period: "Sep 2024 – Present",
-    tech: ["Databricks", "Spark", "Delta Lake", "Kafka", "AWS", "Python"],
-    points: [
-      "Built observability platform across 100+ live streaming jobs — real-time visibility into lag, throughput, and job health",
-      "Extended platform with LLM agents (Google ADK + Mem0) that diagnose anomalies and recommend fixes",
-      "Reduced pipeline runtime by 50% (50 min → 23 min) via Spark UI and DAG optimization",
-      "Cut ingestion boilerplate by 90% — designed reusable Maven JAR for consistent onboarding"
-    ]
+    domain: "Banking · Employee platforms",
+    summary:
+      "Build a 40TB+/day Databricks lakehouse serving 50+ downstream services, spanning ingestion, observability, AI, and platform optimization.",
+    tech: [
+      "Databricks",
+      "Delta Lake",
+      "Spark",
+      "Kafka",
+      "DLT",
+      "AWS",
+      "Terraform",
+      "Python",
+      "Google ADK",
+    ],
+    groups: [
+      {
+        label: "Ingestion",
+        points: [
+          "Built PySpark streaming ingestion from Kafka with stateful change data capture (CDC)",
+          "Redesigned Kafka ingestion to load streams directly into Databricks raw tables, removing an intermediate ECS layer and reducing infrastructure cost and operational overhead",
+          "Designed a reusable Maven JAR that standardized onboarding and cut ingestion boilerplate by 90%",
+          "Built a Delta Live Tables pipeline to continuously classify infrastructure assets, including virtual desktops, servers, and client machines, with built-in data quality checks",
+        ],
+      },
+      {
+        label: "Observability",
+        points: [
+          "Built a plug-in Spark observability layer as a Scala JAR that attaches to Spark sessions on any compute cluster and uses Spark's listener lifecycle to capture metrics in real time",
+          "Monitors PySpark, Scala, and Java workloads without code changes; now tracks 200+ streaming jobs across four projects, writing to a dedicated catalog schema for each",
+          "Captures one record per micro-batch, normalizing and joining related tables to preserve full batch context—a level of detail not available in Databricks system tables",
+          "Exposes previously opaque streaming behavior, including stage-level timing such as WAL commit phases, input versus processing rate, p99 latency, and consumer lag",
+          "Built dashboards to surface trends and patterns, with scheduled alerts for critical conditions and automatic ServiceNow tickets; proposed for firm-wide adoption",
+        ],
+      },
+      {
+        label: "AI agents",
+        points: [
+          "Built a Google ADK multi-agent system with a sequence of specialized agents, each operating within a bounded context and passing its results to the next",
+          "Built a CDC pipeline that writes Spark event data to PostgreSQL using fixed, well-defined schemas, giving agents a clean, queryable source for reasoning",
+          "Added persistent session memory, tools, and MCP servers to retrieve live details from Databricks, Bitbucket, and Jira in parallel, returning responses in under 30 seconds",
+          "Help developers and engineering leaders inspect platform health in real time and investigate failing jobs by cross-checking event data against live Databricks state",
+          "Run autonomous platform observations outside the chat window, generating reports on critical and warning issues with supporting reasoning and affected jobs",
+        ],
+      },
+      {
+        label: "Performance and cost",
+        points: [
+          "Reduced pipeline runtime from 50 to 23 minutes through Spark UI and DAG analysis",
+          "Tuned Delta tables with liquid clustering, partitioning, and OPTIMIZE/VACUUM, and moved cold data to S3 Glacier tiers to control cost",
+        ],
+      },
+      {
+        label: "Infrastructure and delivery",
+        points: [
+          "Manage AWS infrastructure across S3, Kinesis, Lambda, and ECS with Terraform, and deploy through Databricks Asset Bundles CI/CD",
+        ],
+      },
+    ],
   },
   {
     company: "Optum / UnitedHealth Group",
     role: "Software Engineering Lead",
     period: "Jan 2021 – Sep 2024",
-    tech: ["Kafka", "Spring Batch", "Java", "AWS", "Microservices"],
-    points: [
-      "Processed 100K transactions in under 3 minutes via Kafka + Spring Batch — 4x faster than prior system",
-      "Built reusable Kafka and Object Storage libraries adopted by 30+ microservices",
-      "Mentored 4 engineers, led code reviews, drove clean architecture adoption"
-    ]
+    domain: "Healthcare · Transactions",
+    summary:
+      "Built high-throughput healthcare data pipelines and shared platform capabilities, from reliable ETL and financial reporting to operational dashboards and engineering standards.",
+    tech: [
+      "Kafka",
+      "Spring Batch",
+      "Spring Boot",
+      "Java",
+      "React",
+      "Redux",
+      "TypeScript",
+      "AWS",
+    ],
+    groups: [
+      {
+        label: "Data pipelines",
+        points: [
+          "Built a Kafka and Spring Batch pipeline processing 100,000 transactions in under 3 minutes—4x faster than its predecessor—and streaming results continuously to downstream partners",
+          "Built a Spring Batch and Kafka finance module for high-volume ETL, supporting reliable financial reporting and reconciliation",
+        ],
+      },
+      {
+        label: "Platform and shared libraries",
+        points: [
+          "Designed and published reusable Kafka and object storage libraries adopted by 30+ microservices, standardizing data processing and speeding up onboarding",
+          "Introduced AOP-based structured logging across microservices, resolving inconsistent logs and making incidents faster to trace",
+        ],
+      },
+      {
+        label: "Full stack",
+        points: [
+          "Led development of the VBRS reporting UI using React, Redux, and TypeScript, giving operations teams real-time visibility into pipeline metrics",
+        ],
+      },
+      {
+        label: "Leadership",
+        points: [
+          "Mentored 4 engineers, led code reviews, and drove clean architecture adoption across the team",
+        ],
+      },
+    ],
   },
   {
     company: "Deloitte USI",
     role: "Consultant — Full Stack Developer",
     period: "Apr 2018 – Dec 2020",
+    domain: "Consulting · Energy Sector",
+    summary:
+      "Delivered e-commerce and SAP integration solutions for a major energy and retail client, alongside reusable automation for multilingual content.",
     tech: ["Java", "Python", "Spring Boot", "React", "SAP Integration"],
-    points: [
-      "Reduced SAP Order Sync failures by 90% — resolved race conditions for ExxonMobil",
-      "Cut manual translation effort by 70% with Python automation POC",
-      "Delivered Full Palletization, Order Management, and Market Validation features"
-    ]
+    groups: [
+      {
+        label: "E-commerce and SAP integration",
+        points: [
+          "Cut SAP order-sync failures by 90% by resolving race conditions and data inconsistencies in the integration layer, preventing repeated SLA breaches",
+          "Delivered Full Palletization, Order Management, and Market Validation features end to end, from client requirements through production",
+        ],
+      },
+      {
+        label: "Automation",
+        points: [
+          "Built a Python proof of concept for multilingual content translation, reducing manual effort by 70%; the client reused it as a pattern",
+        ],
+      },
+    ],
   },
   {
     company: "Tata Consultancy Services",
     role: "System Engineer",
     period: "Sep 2015 – Apr 2018",
-    tech: ["Java", "Spring", "Oracle", "Banking Systems"],
-    points: [
-      "Redesigned cross-channel CCV system with server-side validation for major banking client",
-      "Led system impact analysis and enforced coding standards across distributed team"
-    ]
-  }
+    domain: "IT services · Banking systems",
+    summary:
+      "Built and maintained backend services for a bank’s core platform, with a focus on secure cross-channel validation and Oracle performance.",
+    tech: ["Java", "Spring", "Oracle"],
+    groups: [
+      {
+        label: "Banking platform",
+        points: [
+          "Redesigned a cross-channel customer validation (CCV) system for a major banking client, moving validation server-side for consistent behavior across channels and stronger data security",
+          "Led system impact analysis and enforced coding standards through structured code reviews, reducing rework across a distributed team",
+          "Worked on backend services and Oracle database performance for the bank’s core platform",
+        ],
+      },
+    ],
+  },
 ];
 ---
 
 <section>
   <h2>Experience</h2>
   <div class="exp-list">
-    {experience.map(job => (
-      <div class="exp-item">
-        <div class="exp-header">
-          <div>
-            <span class="exp-company">{job.company}</span>
-            <span class="exp-role">{job.role}</span>
+    {
+      experience.map((job) => (
+        <details class="exp-item">
+          <summary class="exp-toggle">
+            <div class="exp-header">
+              <div class="exp-heading">
+                <span class="exp-company">{job.company}</span>
+                <span class="exp-role">{job.role}</span>
+              </div>
+              <div class="exp-meta">
+                <span class="exp-domain">{job.domain}</span>
+                <span class="exp-period">{job.period}</span>
+              </div>
+            </div>
+            <p class="exp-summary">{job.summary}</p>
+            <div class="exp-preview-footer">
+              <div class="exp-tech">
+                {job.tech.map((t) => (
+                  <span>{t}</span>
+                ))}
+              </div>
+              <span class="exp-disclosure">
+                <span class="exp-show">Show more</span>
+                <span class="exp-hide">Show less</span>
+              </span>
+            </div>
+          </summary>
+          <div class="exp-details">
+            <div class="exp-groups">
+              {job.groups.map((group) => (
+                <div class="exp-group">
+                  {group.label && <h3>{group.label}</h3>}
+                  <ul class="exp-points">
+                    {group.points.map((p) => (
+                      <li>{p}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
-          <span class="exp-period">{job.period}</span>
-        </div>
-        <div class="exp-tech">
-          {job.tech.map(t => <span>{t}</span>)}
-        </div>
-        <ul class="exp-points">
-          {job.points.map(p => <li>{p}</li>)}
-        </ul>
-      </div>
-    ))}
+        </details>
+      ))
+    }
   </div>
 </section>
 
 <style>
-  section { margin-bottom: 2.5rem; }
+  section {
+    margin-bottom: 2.5rem;
+  }
 
   h2 {
     font-size: 0.75rem;
@@ -82,14 +227,20 @@ const experience = [
     margin-bottom: 1.25rem;
   }
 
-  .exp-list { display: flex; flex-direction: column; gap: 1.75rem; }
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
 
   .exp-item {
     padding-left: 1rem;
-    border-left: 2px solid var(--border);
+    border-left: 1px solid var(--border);
     transition: border-color 0.2s;
   }
-  .exp-item:hover { border-color: var(--accent); }
+  .exp-item:hover {
+    border-color: var(--accent);
+  }
 
   .exp-header {
     display: flex;
@@ -97,38 +248,131 @@ const experience = [
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
+  }
+  .exp-toggle {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    list-style: none;
+    padding-right: 1.5rem;
+  }
+  .exp-toggle::-webkit-details-marker {
+    display: none;
+  }
+  .exp-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 3px;
+  }
+  .exp-preview-footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .exp-disclosure::after {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 1.5px solid var(--muted);
+    border-bottom: 1.5px solid var(--muted);
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+  .exp-item[open] .exp-disclosure::after {
+    transform: rotate(225deg);
+  }
+  .exp-disclosure {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.15rem;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .exp-hide,
+  .exp-item[open] .exp-show {
+    display: none;
+  }
+  .exp-item[open] .exp-hide {
+    display: inline;
+  }
+  .exp-details {
+    padding-top: 0.7rem;
+  }
+  .exp-heading {
+    min-width: 0;
+  }
+  .exp-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.15rem;
+    text-align: right;
   }
   .exp-company {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.05rem;
     display: block;
   }
   .exp-role {
     font-size: 0.875rem;
-    color: var(--accent);
+    color: var(--muted);
     display: block;
-    margin-top: 0.1rem;
+    margin-top: 0.15rem;
+  }
+  .exp-domain {
+    color: var(--muted);
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+  .exp-summary {
+    margin: 0.7rem 0 0.8rem;
+    color: var(--muted);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.65;
   }
   .exp-period {
-    font-size: 0.8rem;
-    color: var(--light);
+    font-size: 0.75rem;
+    color: var(--muted);
     white-space: nowrap;
+    font-variant-numeric: tabular-nums;
   }
 
   .exp-tech {
     display: flex;
+    flex: 1;
     flex-wrap: wrap;
-    gap: 0.35rem;
-    margin-bottom: 0.75rem;
+    gap: 0.3rem;
   }
   .exp-tech span {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--muted);
-    padding: 0.15rem 0.45rem;
+    padding: 0.12rem 0.4rem;
     background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 3px;
+    border-radius: 4px;
+  }
+
+  .exp-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .exp-group {
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--border);
+  }
+  .exp-group h3 {
+    margin-bottom: 0.35rem;
+    color: var(--text);
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.4;
   }
 
   .exp-points {
@@ -139,19 +383,23 @@ const experience = [
     padding-left: 1rem;
     font-size: 0.875rem;
     color: var(--muted);
-    margin-bottom: 0.4rem;
-    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    line-height: 1.65;
   }
   .exp-points li::before {
-    content: '›';
+    content: "•";
     position: absolute;
     left: 0;
-    color: var(--accent);
-    font-weight: 600;
+    color: var(--light);
   }
-  .exp-points li:last-child { margin-bottom: 0; }
+  .exp-points li:last-child {
+    margin-bottom: 0;
+  }
 
   @media (max-width: 550px) {
-    .exp-header { flex-direction: column; gap: 0.25rem; }
+    .exp-header {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
   }
 </style>

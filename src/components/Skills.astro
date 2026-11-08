@@ -2,47 +2,80 @@
 const skillGroups = [
   {
     label: "Data Engineering",
-    items: ["Databricks", "Apache Spark", "PySpark", "Kafka", "Kinesis", "Delta Lake", "ETL/ELT", "Parquet"]
+    items: [
+      "Databricks",
+      "Apache Spark",
+      "PySpark",
+      "Kafka",
+      "Kinesis",
+      "Delta Lake",
+      "ETL/ELT",
+      "Parquet",
+    ],
   },
   {
     label: "Cloud & Infra",
-    items: ["AWS", "S3", "ECS", "EKS", "Lambda", "Docker", "Kubernetes", "Terraform", "GitHub Actions"]
+    items: [
+      "AWS",
+      "S3",
+      "ECS",
+      "EKS",
+      "Lambda",
+      "Docker",
+      "Kubernetes",
+      "Terraform",
+      "GitHub Actions",
+    ],
   },
   {
     label: "Languages",
-    items: ["Python", "Java", "SQL", "Scala", "TypeScript"]
+    items: ["Python", "Java", "SQL", "Scala", "TypeScript"],
   },
   {
     label: "AI & Agents",
-    items: ["Google ADK", "LangChain", "MCP", "OpenAI", "Claude", "Mem0"]
+    items: ["Google ADK", "LangChain", "MCP", "OpenAI", "Claude", "Mem0"],
   },
   {
     label: "Backend & DB",
-    items: ["Spring Boot", "FastAPI", "Microservices", "MySQL", "Oracle", "MongoDB", "DynamoDB"]
+    items: [
+      "Spring Boot",
+      "FastAPI",
+      "Microservices",
+      "MySQL",
+      "Oracle",
+      "MongoDB",
+      "DynamoDB",
+    ],
   },
   {
     label: "Observability",
-    items: ["Spark UI", "DAG Analysis", "Splunk", "Grafana", "Prometheus"]
-  }
+    items: ["Spark UI", "DAG Analysis", "Splunk", "Grafana", "Prometheus"],
+  },
 ];
 ---
 
 <section>
   <h2>Skills</h2>
   <div class="skills-grid">
-    {skillGroups.map(group => (
-      <div class="skill-group">
-        <h3>{group.label}</h3>
-        <div class="skill-items">
-          {group.items.map(s => <span class="skill">{s}</span>)}
+    {
+      skillGroups.map((group) => (
+        <div class="skill-group">
+          <h3>{group.label}</h3>
+          <div class="skill-items">
+            {group.items.map((s) => (
+              <span class="skill">{s}</span>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 </section>
 
 <style>
-  section { margin-bottom: 2.5rem; }
+  section {
+    margin-bottom: 2.5rem;
+  }
 
   h2 {
     font-size: 0.75rem;
