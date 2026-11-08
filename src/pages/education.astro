@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 const education = {
   degree: "B.Tech in Information Technology",
@@ -9,36 +9,42 @@ const education = {
   highlights: [
     "Focused on software engineering and database systems",
     "Active participant in coding competitions",
-    "Final year project on distributed systems"
-  ]
+    "Final year project on distributed systems",
+  ],
 };
 
 const certifications = [
   {
     name: "Databricks Certified Data Engineer Associate",
     issuer: "Databricks",
-    date: "Sep 2024",
+    date: "Sep 2026",
     icon: "DB",
-    description: "Validates expertise in data engineering using Databricks Lakehouse Platform, including ETL processes, data pipelines, and Delta Lake."
+    description:
+      "Validates expertise in data engineering using Databricks Lakehouse Platform, including ETL processes, data pipelines, and Delta Lake.",
   },
   {
     name: "AWS Certified Cloud Practitioner (CLF-C02)",
     issuer: "Amazon Web Services",
     date: "Jul 2024",
     icon: "AWS",
-    description: "Demonstrates foundational understanding of AWS Cloud, including core services, security, architecture, and pricing."
+    description:
+      "Demonstrates foundational understanding of AWS Cloud, including core services, security, architecture, and pricing.",
   },
   {
     name: "Oracle Certified Professional, Java SE 6",
     issuer: "Oracle",
     date: "Nov 2014",
     icon: "OCP",
-    description: "Professional-level certification validating advanced Java programming skills and object-oriented design principles."
-  }
+    description:
+      "Professional-level certification validating advanced Java programming skills and object-oriented design principles.",
+  },
 ];
 ---
 
-<Layout title="Education — Sanket Saha" description="Education and professional certifications of Sanket Saha">
+<Layout
+  title="Education — Sanket Saha"
+  description="Education and professional certifications of Sanket Saha"
+>
   <div class="page-header">
     <h1>Education & Certifications</h1>
     <p>Academic background and professional credentials.</p>
@@ -48,14 +54,21 @@ const certifications = [
     <h2>Education</h2>
     <div class="education-card">
       <div class="edu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          ><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path
+            d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg
+        >
       </div>
       <div class="edu-content">
         <h3>{education.degree}</h3>
         <p class="edu-university">{education.university}</p>
         <p class="edu-meta">{education.period} · {education.location}</p>
         <ul class="edu-highlights">
-          {education.highlights.map(h => <li>{h}</li>)}
+          {education.highlights.map((h) => <li>{h}</li>)}
         </ul>
       </div>
     </div>
@@ -64,17 +77,19 @@ const certifications = [
   <section class="certs-section">
     <h2>Certifications</h2>
     <div class="certs-grid">
-      {certifications.map(cert => (
-        <div class="cert-card">
-          <div class="cert-header">
-            <span class="cert-icon">{cert.icon}</span>
-            <span class="cert-date">{cert.date}</span>
+      {
+        certifications.map((cert) => (
+          <div class="cert-card">
+            <div class="cert-header">
+              <span class="cert-icon">{cert.icon}</span>
+              <span class="cert-date">{cert.date}</span>
+            </div>
+            <h3>{cert.name}</h3>
+            <p class="cert-issuer">{cert.issuer}</p>
+            <p class="cert-desc">{cert.description}</p>
           </div>
-          <h3>{cert.name}</h3>
-          <p class="cert-issuer">{cert.issuer}</p>
-          <p class="cert-desc">{cert.description}</p>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </section>
 </Layout>
@@ -157,7 +172,7 @@ const certifications = [
     margin-bottom: 0.25rem;
   }
   .edu-highlights li::before {
-    content: '›';
+    content: "›";
     position: absolute;
     left: 0;
     color: var(--accent);

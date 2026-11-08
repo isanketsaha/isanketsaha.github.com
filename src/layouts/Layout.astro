@@ -11,8 +11,6 @@ const currentPath = Astro.url.pathname;
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/education", label: "Education" },
-  { href: "/blog", label: "Blog" },
 ];
 ---
 
@@ -54,7 +52,7 @@ const navLinks = [
     </main>
 
     <footer>
-      <p>© 2024 Sanket Saha</p>
+      <p>© {new Date().getFullYear()} Sanket Saha</p>
     </footer>
 
     <style is:global>
@@ -103,7 +101,7 @@ const navLinks = [
       }
 
       nav {
-        max-width: 750px;
+        max-width: 1000px;
         margin: 0 auto;
         padding: 1.5rem 1.5rem 0;
         display: flex;
@@ -144,7 +142,7 @@ const navLinks = [
       }
 
       main {
-        max-width: 750px;
+        max-width: 1000px;
         margin: 0 auto;
         padding: 2rem 1.5rem 3rem;
       }

@@ -3,28 +3,28 @@ const education = {
   degree: "B.Tech in Information Technology",
   university: "GITAM University",
   period: "2011 – 2015",
-  location: "Visakhapatnam, India"
+  location: "Visakhapatnam, India",
 };
 
 const certifications = [
   {
     name: "Databricks Certified Data Engineer Associate",
     issuer: "Databricks",
-    date: "Sep 2024",
-    icon: "DB"
+    date: "Sep 2026",
+    icon: "DB",
   },
   {
     name: "AWS Certified Cloud Practitioner (CLF-C02)",
     issuer: "Amazon Web Services",
     date: "Jul 2024",
-    icon: "AWS"
+    icon: "AWS",
   },
   {
     name: "Oracle Certified Professional, Java SE 6",
     issuer: "Oracle",
     date: "Nov 2014",
-    icon: "OCP"
-  }
+    icon: "OCP",
+  },
 ];
 ---
 
@@ -34,7 +34,14 @@ const certifications = [
   <div class="edu-cert-grid">
     <div class="education-card">
       <div class="edu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          ><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path
+            d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg
+        >
       </div>
       <div class="edu-info">
         <h3>{education.degree}</h3>
@@ -44,21 +51,27 @@ const certifications = [
     </div>
 
     <div class="certs-list">
-      {certifications.map(cert => (
-        <div class="cert-item">
-          <span class="cert-icon">{cert.icon}</span>
-          <div class="cert-info">
-            <span class="cert-name">{cert.name}</span>
-            <span class="cert-meta">{cert.issuer} · {cert.date}</span>
+      {
+        certifications.map((cert) => (
+          <div class="cert-item">
+            <span class="cert-icon">{cert.icon}</span>
+            <div class="cert-info">
+              <span class="cert-name">{cert.name}</span>
+              <span class="cert-meta">
+                {cert.issuer} · {cert.date}
+              </span>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
 
 <style>
-  section { margin-bottom: 2.5rem; }
+  section {
+    margin-bottom: 2.5rem;
+  }
 
   h2 {
     font-size: 0.75rem;

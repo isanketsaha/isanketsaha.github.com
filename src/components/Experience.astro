@@ -28,6 +28,13 @@ const experience: {
     ],
     groups: [
       {
+        label: "Lakehouse platform",
+        points: [
+          "Built a multi-source Databricks and Delta Lake lakehouse ingesting 40TB+ daily from Kafka and REST APIs into S3 across Bronze, Silver, and Gold layers, serving 50+ downstream services",
+          "Defined data contracts and freshness SLAs with consumers, architects, and operations teams",
+        ],
+      },
+      {
         label: "Ingestion",
         points: [
           "Built PySpark streaming ingestion from Kafka with stateful change data capture (CDC)",
@@ -59,7 +66,7 @@ const experience: {
       {
         label: "Performance and cost",
         points: [
-          "Reduced pipeline runtime from 50 to 23 minutes through Spark UI and DAG analysis",
+          "Reduced pipeline runtime by 54% (50 to 23 minutes) through Spark UI and DAG analysis",
           "Tuned Delta tables with liquid clustering, partitioning, and OPTIMIZE/VACUUM, and moved cold data to S3 Glacier tiers to control cost",
         ],
       },
