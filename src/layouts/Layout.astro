@@ -2,11 +2,47 @@
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
 
-const { title, description = "Sanket Saha — Senior Data Engineer" } =
-  Astro.props;
+const {
+  title,
+  description = "Sanket Saha — Senior Data Engineer",
+  noindex = false,
+} = Astro.props;
 const currentPath = Astro.url.pathname;
+const siteUrl = Astro.site ?? Astro.url;
+const canonicalUrl = new URL(currentPath, siteUrl);
+const sitemapUrl = new URL("sitemap-index.xml", siteUrl);
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Sanket Saha",
+  url: new URL("/", siteUrl).href,
+  jobTitle: "Senior Data Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "JPMorgan Chase",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Hyderabad",
+    addressCountry: "IN",
+  },
+  sameAs: [
+    "https://github.com/isanketsaha",
+    "https://www.linkedin.com/in/sanket-saha",
+  ],
+  knowsAbout: [
+    "Data engineering",
+    "Databricks",
+    "Apache Spark",
+    "Apache Kafka",
+    "AWS",
+    "AI agents",
+  ],
+};
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -19,14 +55,30 @@ const navLinks = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={noindex ? "noindex, follow" : "index, follow"}
+    />
+    <link rel="canonical" href={canonicalUrl.href} />
+    <link rel="sitemap" href={sitemapUrl.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:site_name" content="Sanket Saha" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
   </head>
   <body>
     <div class="bg-grid"></div>
