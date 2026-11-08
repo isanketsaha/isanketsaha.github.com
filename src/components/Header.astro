@@ -189,11 +189,19 @@
   }
   .badges span {
     font-size: 0.7rem;
-    color: var(--light);
+    color: #1d4ed8;
     padding: 0.2rem 0.5rem;
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
     border-radius: 4px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .badges span {
+      color: #bfdbfe;
+      background: #172554;
+      border-color: #1e3a8a;
+    }
   }
 
   @media (max-width: 550px) {

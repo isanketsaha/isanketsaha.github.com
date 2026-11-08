@@ -2,54 +2,27 @@
 const skillGroups = [
   {
     label: "Data Engineering",
-    items: [
-      "Databricks",
-      "Apache Spark",
-      "PySpark",
-      "Kafka",
-      "Kinesis",
-      "Delta Lake",
-      "ETL/ELT",
-      "Parquet",
-    ],
+    items: ["Databricks", "Apache Spark", "Kafka", "Delta Lake"],
   },
   {
     label: "Cloud & Infra",
-    items: [
-      "AWS",
-      "S3",
-      "ECS",
-      "EKS",
-      "Lambda",
-      "Docker",
-      "Kubernetes",
-      "Terraform",
-      "GitHub Actions",
-    ],
+    items: ["AWS", "S3", "Terraform", "Docker"],
   },
   {
     label: "Languages",
-    items: ["Python", "Java", "SQL", "Scala", "TypeScript"],
+    items: ["Python", "Java", "SQL", "Scala"],
   },
   {
     label: "AI & Agents",
-    items: ["Google ADK", "LangChain", "MCP", "OpenAI", "Claude", "Mem0"],
+    items: ["Google ADK", "MCP", "LangChain"],
   },
   {
     label: "Backend & DB",
-    items: [
-      "Spring Boot",
-      "FastAPI",
-      "Microservices",
-      "MySQL",
-      "Oracle",
-      "MongoDB",
-      "DynamoDB",
-    ],
+    items: ["Spring Boot", "Microservices", "MySQL", "Oracle"],
   },
   {
     label: "Observability",
-    items: ["Spark UI", "DAG Analysis", "Splunk", "Grafana", "Prometheus"],
+    items: ["Spark UI", "Grafana", "Prometheus"],
   },
 ];
 ---
@@ -116,7 +89,7 @@ const skillGroups = [
 
   .skill {
     font-size: 0.8rem;
-    color: var(--muted);
+    color: var(--text);
     padding: 0.2rem 0.5rem;
     background: var(--bg);
     border: 1px solid var(--border);

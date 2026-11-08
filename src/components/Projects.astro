@@ -1,54 +1,54 @@
 ---
 const projects = [
   {
-    name: "Tulip School Management System",
-    description: "Full-stack platform serving 150+ students — attendance, fee tracking, WhatsApp notifications, Metabase analytics, AI-driven smart review",
-    tech: ["React", "Java", "Spring Boot", "MySQL", "WhatsApp API"],
-    link: "https://tulipschool.co.in",
-    linkText: "Live Site"
+    name: "Tulip School Platform",
+    description:
+      "A live school platform for attendance, fees, parent communication, and reporting.",
+    href: "/projects#tulip-school-platform",
+    label: "School operations",
   },
   {
-    name: "AI Agent SDK",
-    description: "Built SDK to integrate AI agents with school and personal systems using modern agent frameworks",
-    tech: ["Python", "Google ADK", "MCP", "LangChain"],
-    link: "https://github.com/isanketsaha",
-    linkText: "GitHub"
+    name: "AI Agents for Lakehouse Operations",
+    description:
+      "A high-level architecture for agents that investigate platform health using event data and live operational context.",
+    href: "/projects#ai-lakehouse-agents",
+    label: "Data + AI",
   },
-  {
-    name: "Self-Hosted Home Server",
-    description: "Secure storage, media streaming, and home automation — hands-on DevOps beyond enterprise",
-    tech: ["Docker", "Synology", "Terraform"],
-    link: null,
-    linkText: null
-  }
 ];
 ---
 
-<section>
-  <h2>Projects</h2>
+<section class="selected-work" aria-labelledby="selected-work-title">
+  <div class="section-heading">
+    <h2 id="selected-work-title">Selected work</h2>
+    <a href="/projects">All projects <span aria-hidden="true">→</span></a>
+  </div>
   <div class="projects-list">
-    {projects.map(project => (
-      <div class="project-item">
-        <div class="project-header">
+    {
+      projects.map((project) => (
+        <a class="project-item" href={project.href}>
+          <span class="project-label">{project.label}</span>
           <h3>{project.name}</h3>
-          {project.link && (
-            <a href={project.link} target="_blank" class="project-link">
-              {project.linkText}
-              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
-            </a>
-          )}
-        </div>
-        <p class="project-desc">{project.description}</p>
-        <div class="project-tech">
-          {project.tech.map(t => <span>{t}</span>)}
-        </div>
-      </div>
-    ))}
+          <p class="project-desc">{project.description}</p>
+          <span class="project-link">
+            View project <span aria-hidden="true">→</span>
+          </span>
+        </a>
+      ))
+    }
   </div>
 </section>
 
 <style>
-  section { margin-bottom: 2.5rem; }
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.25rem;
+  }
 
   h2 {
     font-size: 0.75rem;
@@ -56,12 +56,17 @@ const projects = [
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--light);
-    margin-bottom: 1.25rem;
+  }
+
+  .section-heading > a {
+    color: var(--accent);
+    font-size: 0.8rem;
+    text-decoration: none;
   }
 
   .projects-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
 
@@ -69,59 +74,47 @@ const projects = [
     padding: 1rem;
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 10px;
     transition: border-color 0.2s;
+    color: inherit;
+    text-decoration: none;
   }
   .project-item:hover {
     border-color: var(--accent);
   }
 
-  .project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .project-label {
+    display: inline-block;
     margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
-  .project-header h3 {
+  .project-item h3 {
     font-size: 0.95rem;
     font-weight: 600;
-  }
-
-  .project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 0.8rem;
-    color: var(--accent);
-    text-decoration: none;
-  }
-  .project-link:hover {
-    text-decoration: underline;
-  }
-  .project-link svg {
-    width: 14px;
-    height: 14px;
+    margin-bottom: 0.35rem;
   }
 
   .project-desc {
     font-size: 0.85rem;
     color: var(--muted);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.65rem;
     line-height: 1.5;
   }
 
-  .project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
+  .project-link {
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
   }
-  .project-tech span {
-    font-size: 0.7rem;
-    color: var(--light);
-    padding: 0.15rem 0.4rem;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 3px;
+
+  @media (max-width: 550px) {
+    .projects-list {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

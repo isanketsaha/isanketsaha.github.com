@@ -9,23 +9,13 @@ const experience: {
   groups: { label?: string; points: string[] }[];
 }[] = [
   {
-    company: "JP Morgan Chase",
+    company: "JPMorgan Chase",
     role: "Senior Data Engineer",
     period: "Sep 2024 – Present",
     domain: "Banking · Employee platforms",
     summary:
       "Build a 40TB+/day Databricks lakehouse serving 50+ downstream services, spanning ingestion, observability, AI, and platform optimization.",
-    tech: [
-      "Databricks",
-      "Delta Lake",
-      "Spark",
-      "Kafka",
-      "DLT",
-      "AWS",
-      "Terraform",
-      "Python",
-      "Google ADK",
-    ],
+    tech: ["Databricks", "Spark", "Kafka", "AWS", "Google ADK"],
     groups: [
       {
         label: "Lakehouse platform",
@@ -85,16 +75,7 @@ const experience: {
     domain: "Healthcare · Transactions",
     summary:
       "Built high-throughput healthcare data pipelines and shared platform capabilities, from reliable ETL and financial reporting to operational dashboards and engineering standards.",
-    tech: [
-      "Kafka",
-      "Spring Batch",
-      "Spring Boot",
-      "Java",
-      "React",
-      "Redux",
-      "TypeScript",
-      "AWS",
-    ],
+    tech: ["Kafka", "Spring Batch", "Java", "React", "AWS"],
     groups: [
       {
         label: "Data pipelines",
@@ -339,9 +320,9 @@ const experience: {
   .exp-summary {
     margin: 0.7rem 0 0.8rem;
     color: var(--muted);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: inherit;
     font-size: 0.9rem;
-    font-style: italic;
+    font-style: normal;
     line-height: 1.65;
   }
   .exp-period {
@@ -359,9 +340,10 @@ const experience: {
   }
   .exp-tech span {
     font-size: 0.68rem;
-    color: var(--muted);
+    color: var(--text);
     padding: 0.12rem 0.4rem;
-    background: var(--card);
+    background: var(--bg);
+    border: 1px solid var(--border);
     border-radius: 4px;
   }
 
