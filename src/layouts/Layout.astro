@@ -14,6 +14,7 @@ const currentPath = Astro.url.pathname;
 const siteUrl = Astro.site ?? Astro.url;
 const canonicalUrl = new URL(currentPath, siteUrl);
 const sitemapUrl = new URL("sitemap-index.xml", siteUrl);
+const googleAnalyticsId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID?.trim();
 
 const personSchema = {
   "@context": "https://schema.org",
@@ -80,7 +81,7 @@ const navLinks = [
       set:html={JSON.stringify(personSchema)}
     />
   </head>
-  <body>
+  <body data-ga-id={googleAnalyticsId || undefined}>
     <div class="bg-grid"></div>
 
     <nav>
@@ -106,6 +107,38 @@ const navLinks = [
     <footer>
       <p>© {new Date().getFullYear()} Sanket Saha</p>
     </footer>
+
+    <script is:inline>
+      (() => {
+        const measurementId = document.body.dataset.gaId;
+        if (!measurementId) return;
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+          window.dataLayer.push(arguments);
+        };
+        window.gtag("js", new Date());
+        window.gtag("config", measurementId);
+
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+        document.head.appendChild(script);
+
+        document.addEventListener("click", (event) => {
+          const link =
+            event.target instanceof Element
+              ? event.target.closest("a[data-ga-event]")
+              : null;
+          if (link && window.gtag) {
+            window.gtag("event", link.dataset.gaEvent, {
+              file_name: "resume.pdf",
+              link_url: link.href,
+            });
+          }
+        });
+      })();
+    </script>
 
     <style is:global>
       :root {
